@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 const Counter = () => {
+	const [count, setCount] = useState(0)
+	const formCount = () => count === 0 ? 'Ноль' : count
 	return (
 		<>
-			<h1>Counter</h1>
-			<button>Increment</button>
+			<span className='badge bg-primary m-2'>{formCount()}</span>
+			<button className='btn btn-secondary btn-sm'>Increment</button>
 		</>
 	)
 }
