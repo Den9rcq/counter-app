@@ -12,23 +12,9 @@ const Counters = () => {
 
 	const [counters, setCounters] = useState(initialState)
 	// Addition value
-	const handleIncrement = (counterId) => {
-		setCounters(
-			[...counters],
-			counters.map(c => {
-				if (c.id === counterId) c.value++
-			})
-		)
-	}
+	const handleIncrement = (counterId) => setCounters(counters.map(c => c.id === counterId ? {...c, value: ++c.value} : c))
 	// Decrease value
-	const handleDecrement = (counterId) => {
-		setCounters(
-			[...counters],
-			counters.map(c => {
-				if (c.id === counterId && c.value > 0) c.value--
-			})
-		)
-	}
+	const handleDecrement = (counterId) => setCounters(counters.map(c => c.id === counterId && c.value > 0 ? {...c, value: --c.value} : c))
 	// Deleting an array element
 	const handleDelete = (counterId) => setCounters(counters.filter(counter => counter.id !== counterId))
 	// Reset state

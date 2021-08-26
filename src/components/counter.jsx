@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 
 const Counter = (props) => {
 	const formValue = () => props.value === 0 ? 'Ноль' : props.value
