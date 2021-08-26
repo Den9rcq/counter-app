@@ -1,19 +1,17 @@
 import React, {useState} from 'react';
 
 const Counter = (props) => {
-	const [value, setValue] = useState(props.value)
-	const formValue = () => value === 0 ? 'Ноль' : value
-	const getBadgeClasses = () => value === 0 ? 'badge m-2 bg-danger' : 'badge m-2 bg-primary'
-	const handleIncrement = () => setValue(value + 1)
-	const handleDecrement = () => setValue(() => value <= 0 ? 0 : value - 1)
+	const formValue = () => props.value === 0 ? 'Ноль' : props.value
+	const getBadgeClasses = () => props.value === 0 ? 'badge m-2 bg-danger' : 'badge m-2 bg-primary'
+
 	return (
 		<div>
 			<h4>{props.name}</h4>
 			<span className={getBadgeClasses()}>{formValue()}</span>
-			<button onClick={handleIncrement}
+			<button onClick={() => props.onIncrement(props.id)}
 			        className='btn btn-secondary btn-sm m-1'>Increment
 			</button>
-			<button onClick={handleDecrement}
+			<button onClick={() => props.onDecrement(props.id)}
 			        className='btn btn-secondary btn-sm m-1'>Decrement
 			</button>
 			<button onClick={() => props.onDelete(props.id)}
